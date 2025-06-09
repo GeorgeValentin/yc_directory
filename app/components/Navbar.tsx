@@ -1,7 +1,7 @@
-import Link from "next/link";
-import Image from "next/image";
-import React from "react";
-import { auth, signOut, signIn } from "@/auth";
+import Link from 'next/link';
+import Image from 'next/image';
+import React from 'react';
+import { auth, signOut, signIn } from '@/auth';
 
 const Navbar = async () => {
   const session = await auth();
@@ -22,8 +22,8 @@ const Navbar = async () => {
 
               <form
                 action={async () => {
-                  "use server";
-                  await signOut({ redirectTo: "/" });
+                  'use server';
+                  await signOut({ redirectTo: '/' });
                 }}>
                 <button type="submit">Logout</button>
               </form>
@@ -35,8 +35,8 @@ const Navbar = async () => {
           ) : (
             <form
               action={async () => {
-                "use server";
-                await signIn("github");
+                'use server';
+                await signIn('github');
               }}>
               <button type="submit">Login</button>
             </form>
