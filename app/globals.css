@@ -11,9 +11,6 @@
 }
 
 @layer utilities {
-  /* -> When using this class, all classes following the "@apply" element will be taken into consideration 
-     -> This applies to all utility classes that are defined inside an @layer element
-  */
   .flex-between {
     @apply flex justify-between items-center;
   }
