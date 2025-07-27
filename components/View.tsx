@@ -1,6 +1,8 @@
 import { STARTUP_VIEWS_QUERY } from '@/lib/queries';
 import Ping from './Ping';
 import { client } from '@/sanity/lib/client';
+import { writeClient } from '@/sanity/lib/write-client';
+import { after } from 'next/server';
 
 const View = async ({ id }: { id: string }) => {
   // useCdn: false -> this disables Sanity's global CDN cache and it always fetches the freshest data
@@ -8,7 +10,16 @@ const View = async ({ id }: { id: string }) => {
     .withConfig({ useCdn: false })
     .fetch(STARTUP_VIEWS_QUERY, { id });
 
-  // TODO: Update the number of views
+  // PATCH - update the number of views
+  // -> this request and the one above it will execute sequentially and the UI won't load until they are done
+  // -> after() helps us fix this by running the call after the first request above is finished and without blocking the UI
+  after(
+    async () =>
+      await writeClient
+        .patch(id)
+        .set({ views: totalViews + 1 })
+        .commit()
+  );
 
   return (
     <div className="view-container">
