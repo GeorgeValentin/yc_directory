@@ -1,6 +1,6 @@
 import StartupCard, { StartupTypeCard } from '@/components/StartupCard';
 import SearchForm from '../../components/SearchForm';
-import { STARTUPS_QUERY } from '@/lib/queries';
+import { STARTUPS_QUERY } from '@/sanity/lib/queries';
 import { sanityFetch, SanityLive } from '@/sanity/lib/live';
 import { auth } from '@/auth';
 
@@ -12,8 +12,8 @@ export default async function Home({
   const query = (await searchParams).query;
   const params = { search: query || null };
 
+  // this tells us if we are logged in or not
   const session = await auth();
-
   console.log(session?.id);
 
   // this will revalidate this page whenever new changes are met, and refreshing is no longer needed

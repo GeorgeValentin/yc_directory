@@ -1,4 +1,4 @@
-import { STARTUP_VIEWS_QUERY } from '@/lib/queries';
+import { STARTUP_VIEWS_QUERY } from '@/sanity/lib/queries';
 import Ping from './Ping';
 import { client } from '@/sanity/lib/client';
 import { writeClient } from '@/sanity/lib/write-client';
