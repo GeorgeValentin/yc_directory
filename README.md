@@ -1,6 +1,6 @@
 ### YC Directory - A Directory of Startup Pitches from the Community
 
-#### Live App Link: https://yc-directory-rlwkxflf0-georgevalentins-projects.vercel.app/
+#### Live App Link: [https://yc-directory-lemon-nu.vercel.app]
 
 ### Built with:
 
